@@ -1,1 +1,60 @@
 # gobackup.yml
+web:
+  host: 0.0.0.0
+  port: ${WEBUI_PORT}
+models:
+  # special a model name
+  model_name1:
+    before_script: |
+      # Run script before this model perform backup.
+      echo "before script"
+    after_script: |
+      echo "after script"
+    # config compress
+    compress_with:
+      # compress type
+      type: tgz
+    split_with:
+      # Split backup file into multiple files, each file in 1gb.
+      chunk_size: 1g
+    # storage
+    default_storage: local
+    storages:
+      local:
+        type: local
+        path: /home/container/backups
+      ftp:
+        # storage type
+        type: ftp
+        # other config for this storage type
+        host: ftp.your-host.com
+        username: ...
+        password: ...
+    # database source support multiple instance
+    databases:
+      # special a database name
+      my_app1:
+        # database type
+        type: mysql
+        # other config for this database type
+        host: localhost
+        database: my_app_production
+        username: root
+      my_app_redis1:
+        type: redis
+        host: localhost
+        port: 6379
+        mode: sync
+      my_app_redis2:
+        type: redis
+        host: localhost
+        port: 6380
+        mode: sync
+    # archive config
+    archive:
+      # archive multiple files / directoies
+      includes:
+        - /home/container/.gobackup/
+      # path will exclude
+      excludes:
+        - /home/container/backups
