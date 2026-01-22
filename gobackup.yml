@@ -1,7 +1,7 @@
 # gobackup.yml
 web:
   host: 0.0.0.0
-  port: ${WEBUI_PORT}
+  port: ${SERVER_PORT}
 models:
   # special a model name
   model_name1:
