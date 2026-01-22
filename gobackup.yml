@@ -1,6 +1,6 @@
 # gobackup.yml
 web:
-  host: 0.0.0.0
+  host: ${SERVER_IP}
   port: ${SERVER_PORT}
 models:
   # special a model name
