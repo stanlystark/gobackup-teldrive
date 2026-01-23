@@ -1,0 +1,31 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-01-23T16:20:35+03:00",
+    "name": "gobackup",
+    "author": "s@r70.net",
+    "description": "gobackup egg",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/stanlystark\/extend:debian": "ghcr.io\/stanlystark\/extend:debian"
+    },
+    "file_denylist": [],
+    "startup": ".\/bin\/gobackup run",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"Config loaded\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\ncd \/mnt\/server\r\n\r\necho \"\u0421\u043a\u0430\u0447\u0438\u0432\u0430\u0435\u043c GoBackup...\"\r\ncurl -L -o gobackup-linux-amd64.tar.gz \"https:\/\/github.com\/gobackup\/gobackup\/releases\/latest\/download\/gobackup-linux-amd64.tar.gz\"\r\ntar -xvzf gobackup-linux-amd64.tar.gz gobackup\r\nrm gobackup-linux-amd64.tar.gz\r\nchmod +x gobackup\r\nmkdir -p \/mnt\/server\/bin\r\nmv gobackup \/mnt\/server\/bin\r\n\r\necho \"\u0421\u043a\u0430\u0447\u0438\u0432\u0430\u0435\u043c \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044e GoBackup...\"\r\nmkdir -p \/mnt\/server\/.gobackup\r\ncurl -L -o \/mnt\/server\/.gobackup\/gobackup.yml \"https:\/\/raw.githubusercontent.com\/stanlystark\/gobackup-egg\/refs\/heads\/main\/gobackup.yml\"\r\n\r\nmkdir -p \/mnt\/server\/backups\r\nmkdir -p \/mnt\/server\/temp\r\n\r\necho \"GoBackup \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d.\"",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": []
+}
