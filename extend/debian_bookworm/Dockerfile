@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Добавляем MySQL
 RUN apt update \
-    && apt install -y default-mysql-client
+    && apt install -y default-mysql-client pigz
 
 # Копируем и настраиваем entrypoint.sh, чтобы он продолжал работать с нашим новым сервисом
 COPY --chown=container:container ./entrypoint.sh /entrypoint.sh
