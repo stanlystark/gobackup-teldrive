@@ -4,6 +4,7 @@ web:
   port: ${SERVER_PORT}
   username: <your-name>
   password: <your-web-ui-password>
+workdir: /home/container/temp
 models:
   # special a model name
   model_name1:
@@ -24,6 +25,7 @@ models:
     storages:
       local:
         type: local
+        keep: 20
         path: /home/container/backups
       ftp:
         # storage type
