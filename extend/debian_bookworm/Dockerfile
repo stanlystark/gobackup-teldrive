@@ -9,6 +9,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt update \
     && apt install -y default-mysql-client pigz python3 python3-pip python3-venv ca-certificates curl tar
 
+RUN python3 -m pip install telegram-upload
+    
 COPY --chown=container:container ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
