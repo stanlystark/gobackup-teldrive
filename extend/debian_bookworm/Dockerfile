@@ -9,7 +9,9 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Добавляем MySQL
 RUN apt update \
-    && apt install -y default-mysql-client pigz
+    && apt install -y default-mysql-client pigz python3.6
+
+RUN pip3 install -U telegram-upload
 
 # Копируем и настраиваем entrypoint.sh, чтобы он продолжал работать с нашим новым сервисом
 COPY --chown=container:container ./entrypoint.sh /entrypoint.sh
