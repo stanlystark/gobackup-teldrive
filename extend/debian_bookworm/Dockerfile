@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Добавляем MySQL
 RUN apt update \
-    && apt install -y default-mysql-client pigz python3.6
+    && apt install -y default-mysql-client pigz python3
 
 RUN pip3 install -U telegram-upload
 
