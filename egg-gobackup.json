@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2026-01-23T16:20:35+03:00",
+    "exported_at": "2026-01-26T15:49:26+03:00",
     "name": "gobackup",
     "author": "s@r70.net",
     "description": "gobackup egg",
@@ -27,5 +27,16 @@
             "entrypoint": "bash"
         }
     },
-    "variables": []
+    "variables": [
+        {
+            "name": "TELEGRAM_UPLOAD_TO",
+            "description": "More: https:\/\/github.com\/Nekmo\/telegram-upload",
+            "env_variable": "TELEGRAM_UPLOAD_TO",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string|max:64",
+            "field_type": "text"
+        }
+    ]
 }
